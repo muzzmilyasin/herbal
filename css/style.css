@@ -10,7 +10,6 @@
   /* Primary Colors - Professional Navy/Teal */
   --primary-color: #1e4d6b;
   --primary-dark: #143a52;
-  --primary-light: #2a6589;
   --secondary-color: #4a7c8f;
   --accent-color: #c9967a;
   --accent-dark: #b07d5f;
@@ -22,21 +21,12 @@
   --gray: #6b7280;
   --dark-gray: #374151;
   --charcoal: #1f2937;
-  --black: #111827;
-
-  /* Semantic Colors */
-  --success: #059669;
-  --info: #0891b2;
-  --warning: #f59e0b;
-  --danger: #dc2626;
 
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-secondary: 'Roboto', sans-serif;
   --font-accent: 'Merriweather', Georgia, serif;
 
   /* Font Sizes */
-  --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-base: 1rem;
   --fs-lg: 1.125rem;
@@ -57,32 +47,20 @@
   --spacing-3xl: 6rem;
 
   /* Border Radius */
-  --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   /* Transitions */
-  --transition-fast: 150ms ease-in-out;
   --transition-base: 300ms ease-in-out;
-  --transition-slow: 500ms ease-in-out;
 
   /* Z-index */
-  --z-dropdown: 1000;
   --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
 }
 
 /* =================================================================
@@ -186,21 +164,6 @@ p {
   line-height: 1.8;
 }
 
-.text-primary {
-  color: var(--primary-color);
-}
-
-.text-accent {
-  color: var(--accent-color);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-muted {
-  color: var(--gray);
-}
 
 /* =================================================================
    Layout & Container
@@ -211,22 +174,10 @@ p {
   padding: 0 var(--spacing-md);
 }
 
-.container-fluid {
-  width: 100%;
-  padding: 0 var(--spacing-md);
-}
-
 .section {
   padding: var(--spacing-3xl) 0;
 }
 
-.section-sm {
-  padding: var(--spacing-2xl) 0;
-}
-
-.section-lg {
-  padding: 5rem 0;
-}
 
 /* =================================================================
    Header & Navigation
@@ -437,23 +388,6 @@ p {
   box-shadow: var(--shadow-lg);
 }
 
-.btn-outline {
-  background: transparent;
-  color: var(--white);
-  border-color: var(--white);
-}
-
-.btn-outline:hover {
-  background: var(--white);
-  color: var(--primary-color);
-}
-
-.btn-group {
-  display: flex;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 /* =================================================================
    Cards
@@ -469,27 +403,6 @@ p {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-xl);
-}
-
-.card-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.card-body {
-  padding: var(--spacing-lg);
-}
-
-.card-title {
-  font-size: var(--fs-xl);
-  margin-bottom: var(--spacing-sm);
-  color: var(--primary-color);
-}
-
-.card-text {
-  color: var(--dark-gray);
-  margin-bottom: var(--spacing-md);
 }
 
 /* =================================================================
@@ -533,90 +446,6 @@ p {
 }
 
 /* =================================================================
-   Testimonials
-   ================================================================= */
-.testimonials {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-  color: var(--white);
-}
-
-.testimonial-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
-}
-
-.testimonial-text {
-  font-size: var(--fs-lg);
-  font-style: italic;
-  margin-bottom: var(--spacing-md);
-  line-height: 1.8;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-}
-
-.testimonial-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: var(--radius-full);
-  border: 3px solid var(--accent-color);
-}
-
-.testimonial-info h4 {
-  color: var(--white);
-  margin-bottom: var(--spacing-xs);
-}
-
-.testimonial-info p {
-  color: var(--accent-color);
-  margin: 0;
-}
-
-/* =================================================================
-   Contact Form
-   ================================================================= */
-.form-group {
-  margin-bottom: var(--spacing-lg);
-}
-
-.form-label {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 500;
-  color: var(--charcoal);
-}
-
-.form-control {
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 2px solid var(--light-gray);
-  border-radius: var(--radius-md);
-  font-size: var(--fs-base);
-  transition: var(--transition-base);
-  background: var(--white);
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(45, 122, 95, 0.1);
-}
-
-textarea.form-control {
-  min-height: 150px;
-  resize: vertical;
-}
-
-/* =================================================================
    Footer
    ================================================================= */
 .footer {
@@ -625,74 +454,9 @@ textarea.form-control {
   padding: var(--spacing-3xl) 0 var(--spacing-lg);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-2xl);
-}
-
-.footer-section h3 {
-  color: var(--white);
-  margin-bottom: var(--spacing-md);
-  font-size: var(--fs-xl);
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.footer-link {
-  transition: var(--transition-base);
-}
-
-.footer-link:hover {
-  color: var(--accent-color);
-  padding-left: var(--spacing-xs);
-}
-
-.social-links {
-  display: flex;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
-}
-
-.social-link {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition-base);
-}
-
-.social-link:hover {
-  background: var(--accent-color);
-  transform: translateY(-3px);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--gray);
-}
-
 /* =================================================================
    Utilities
    ================================================================= */
-.fade-in {
-  animation: fadeIn 1s ease-out;
-}
-
-.fade-in-up {
-  animation: fadeInUp 1s ease-out;
-}
-
 .section-title {
   text-align: center;
   margin-bottom: var(--spacing-2xl);
@@ -737,30 +501,6 @@ textarea.form-control {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -848,19 +588,8 @@ textarea.form-control {
     font-size: var(--fs-lg);
   }
 
-  .btn-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
   .section {
     padding: var(--spacing-2xl) 0;
-  }
-
-  /* Doctor profile responsive */
-  #about div[style*='grid-template-columns: 1fr 2fr'] {
-    grid-template-columns: 1fr !important;
-    text-align: center;
   }
 }
 
@@ -871,5 +600,19 @@ textarea.form-control {
 
   .container {
     padding: 0 var(--spacing-sm);
+  }
+}
+
+/* =================================================================
+   About Page Responsive Layout
+   ================================================================= */
+@media (min-width: 768px) {
+  .about-profile {
+    grid-template-columns: 280px 1fr !important;
+    gap: 3rem !important;
+  }
+
+  .about-profile>div:first-child {
+    text-align: center;
   }
 }

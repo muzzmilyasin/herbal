@@ -32,28 +32,6 @@
     });
   });
 
-  // =================================================================
-  // Smooth Scrolling
-  // =================================================================
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#') return;
-
-      e.preventDefault();
-      const target = document.querySelector(href);
-
-      if (target) {
-        const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
-        const targetPosition = target.offsetTop - headerHeight;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
 
   // =================================================================
   // Header Scroll Effect
@@ -63,8 +41,14 @@
   window.addEventListener('scroll', function () {
     const hero = document.querySelector('.hero');
 
-    // Get hero height or use default if no hero exists on page
-    const heroHeight = hero ? hero.offsetHeight : 500;
+    // If no hero section exists, keep the header always scrolled
+    if (!hero) {
+      header.classList.add('scrolled');
+      return;
+    }
+
+    // Get hero height
+    const heroHeight = hero.offsetHeight;
 
     if (window.scrollY > heroHeight - 100) {
       header.classList.add('scrolled');
@@ -73,144 +57,6 @@
     }
   });
 
-  // =================================================================
-  // Active Navigation Link
-  // =================================================================
-  function setActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 150;
-      const sectionId = section.getAttribute('id');
-      const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        navLinks.forEach(link => link.classList.remove('active'));
-        if (navLink) navLink.classList.add('active');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', setActiveNavLink);
-  setActiveNavLink();
-
-  // =================================================================
-  // Scroll Animations
-  // =================================================================
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-up');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Observe elements for scroll animations
-  document.querySelectorAll('.service-card, .card').forEach(el => {
-    observer.observe(el);
-  });
-
-  // =================================================================
-  // Form Validation
-  // =================================================================
-  const contactForm = document.querySelector('#contact-form');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData);
-
-      // Basic validation
-      let isValid = true;
-      const requiredFields = contactForm.querySelectorAll('[required]');
-
-      requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-          isValid = false;
-          field.classList.add('error');
-
-          // Remove error class on input
-          field.addEventListener('input', function () {
-            this.classList.remove('error');
-          }, { once: true });
-        }
-      });
-
-      // Email validation
-      const emailField = contactForm.querySelector('[type="email"]');
-      if (emailField && emailField.value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(emailField.value)) {
-          isValid = false;
-          emailField.classList.add('error');
-        }
-      }
-
-      if (isValid) {
-        // Show success message
-        showMessage('Thank you! Your message has been sent successfully.', 'success');
-        contactForm.reset();
-      } else {
-        showMessage('Please fill in all required fields correctly.', 'error');
-      }
-    });
-  }
-
-  // =================================================================
-  // Message Display Helper
-  // =================================================================
-  function showMessage(message, type) {
-    const existingMessage = document.querySelector('.form-message');
-    if (existingMessage) existingMessage.remove();
-
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message ${type}`;
-    messageDiv.textContent = message;
-    messageDiv.style.cssText = `
-      padding: 1rem;
-      margin-top: 1rem;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      text-align: center;
-      animation: fadeInUp 0.3s ease-out;
-      background: ${type === 'success' ? '#d4edda' : '#f8d7da'};
-      color: ${type === 'success' ? '#155724' : '#721c24'};
-      border: 1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'};
-    `;
-
-    if (contactForm) {
-      contactForm.appendChild(messageDiv);
-      setTimeout(() => messageDiv.remove(), 5000);
-    }
-  }
-
-  // =================================================================
-  // Lazy Loading Images
-  // =================================================================
-  const images = document.querySelectorAll('img[data-src]');
-
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.removeAttribute('data-src');
-        imageObserver.unobserve(img);
-      }
-    });
-  });
-
-  images.forEach(img => imageObserver.observe(img));
 
   // =================================================================
   // Back to Top Button
@@ -265,10 +111,5 @@
     this.style.transform = 'translateY(0)';
     this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
   });
-
-  // =================================================================
-  // Initialize on DOM Content Loaded
-  // =================================================================
-  console.log('Acupuncture Website - Initialized');
 
 })();
