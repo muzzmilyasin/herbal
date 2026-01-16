@@ -497,8 +497,8 @@ p {
    ================================================================= */
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr 1fr;
-  gap: var(--spacing-2xl);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
 }
 
@@ -871,9 +871,5 @@ textarea.form-control {
 
   .container {
     padding: 0 var(--spacing-sm);
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
   }
 }
